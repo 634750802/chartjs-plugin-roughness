@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<body>
+<canvas id="canvas"></canvas>
+<script type="module" src="/src/index.js"></script>
+<script type="module">
+  import {Chart} from 'chart.js/auto'
+  import * as Utils from '../utils'
+
+  const DATA_COUNT = 7;
+  const NUMBER_CFG = {count: DATA_COUNT, min: -100, max: 100};
+
+  const labels = Utils.months({count: 7});
+  const data = {
+    labels: labels,
+    datasets: [
+      {
+        label: 'Fully Rounded',
+        data: Utils.numbers(NUMBER_CFG),
+        borderColor: Utils.CHART_COLORS.red,
+        backgroundColor: Utils.transparentize(Utils.CHART_COLORS.red, 0.5),
+        borderWidth: 2,
+        borderRadius: Number.MAX_VALUE,
+        borderSkipped: false,
+      },
+      {
+        label: 'Small Radius',
+        data: Utils.numbers(NUMBER_CFG),
+        borderColor: Utils.CHART_COLORS.blue,
+        backgroundColor: Utils.transparentize(Utils.CHART_COLORS.blue, 0.5),
+        borderWidth: 2,
+        borderRadius: 15,
+        borderSkipped: false,
+      }
+    ]
+  };
+
+  const config = {
+    type: 'bar',
+    data: data,
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'top',
+        },
+        title: {
+          display: true,
+          text: 'Chart.js Bar Chart'
+        }
+      }
+    },
+  };
+
+  const actions = [
+    {
+      name: 'Randomize',
+      handler(chart) {
+        chart.data.datasets.forEach(dataset => {
+          dataset.data = Utils.numbers({count: chart.data.labels.length, min: -100, max: 100});
+        });
+        chart.update();
+      }
+    },
+  ];
+
+
+  const c = new Chart(document.getElementById('canvas'), config)
+  c.resize(640, 480)
+</script>
+</body>
+</html>
