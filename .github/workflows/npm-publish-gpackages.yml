@@ -21,7 +21,7 @@ jobs:
       - run: corepack enable
       - run: pnpm i --frozen-lockfile --prefer-offline
 
-  publish-gpr:
+  publish-npm:
     needs: build
     runs-on: ubuntu-latest
     steps:
