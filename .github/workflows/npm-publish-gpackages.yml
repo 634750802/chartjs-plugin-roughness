@@ -20,6 +20,7 @@ jobs:
       - run: corepack prepare
       - run: corepack enable
       - run: pnpm i --frozen-lockfile --prefer-offline
+      - run: node ./demo/rs-canvas/index.js
 
   publish-npm:
     needs: build

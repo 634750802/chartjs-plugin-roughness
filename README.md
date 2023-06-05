@@ -1,9 +1,13 @@
 # chartjs-plugin-roughness
 
-```js
-import
+![demo](demo/rs-canvas/image.png)
 
-`chartjs-plugin-roughness`
+## Usage
+
+### h5
+
+```js
+import 'chartjs-plugin-roughness'
 
 new Chart(..., {
   ...,
@@ -16,7 +20,13 @@ new Chart(..., {
 })
 ```
 
-More options see [rough options](https://github.com/rough-stuff/rough/wiki#options).
+### SSR
+
+`@napi-rs/canvas` is supported for SSR, see [demo](demo/rs-canvas).
+
+### Rough Options
+
+See [rough options](https://github.com/rough-stuff/rough/wiki#options) for more options.
 
 ### Caution
 

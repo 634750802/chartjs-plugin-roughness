@@ -17,4 +17,4 @@ declare module 'chart.js' {
   }
 }
 
-export function patchContext2D (ctx: CanvasRenderingContext2D);
+export function patchContext2D (ctx: typeof CanvasRenderingContext2D, Path2DClass?: typeof Path2D);
