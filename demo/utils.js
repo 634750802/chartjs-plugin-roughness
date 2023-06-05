@@ -2,6 +2,7 @@ import colorLib from '@kurkle/color';
 import {DateTime} from 'luxon';
 import 'chartjs-adapter-luxon';
 import {valueOrDefault} from 'chart.js/helpers';
+import {Chart} from 'chart.js/auto';
 
 // Adapted from http://indiegamr.com/generate-repeatable-random-numbers-in-js/
 var _seed = Date.now();
@@ -158,4 +159,20 @@ export function newDateString(days) {
 
 export function parseISODate(str) {
   return DateTime.fromISO(str);
+}
+
+export function initChartAndActions(actions, config) {
+  const chart = new Chart(document.getElementById('canvas'), config)
+  const container = document.createElement('div');
+  container.style.marginTop = '16px';
+  container.style.display = 'flex';
+  container.style.gap = '4px';
+  document.body.append(container);
+  for (const action of actions) {
+    const button = document.createElement('button');
+    button.innerText = action.name;
+    button.onclick = action.handler.bind(undefined, chart);
+    container.append(button);
+  }
+  return chart;
 }

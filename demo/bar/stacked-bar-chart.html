@@ -1,11 +1,13 @@
 <!doctype html>
 <html lang="en">
 <body>
-<canvas id="canvas"></canvas>
+<div style="width: 640px; height: 480px">
+  <canvas id="canvas"></canvas>
+</div>
 <script type="module" src="/index.js"></script>
 <script type="module">
-  import {Chart} from 'chart.js/auto'
   import * as Utils from '../utils'
+  import {initChartAndActions} from "../utils.js";
 
   const DATA_COUNT = 7;
   const NUMBER_CFG = {count: DATA_COUNT, min: -100, max: 100};
@@ -66,8 +68,7 @@
     },
   ];
 
-  const c = new Chart(document.getElementById('canvas'), config)
-  c.resize(640, 480)
+  initChartAndActions(actions, config);
 </script>
 </body>
 </html>

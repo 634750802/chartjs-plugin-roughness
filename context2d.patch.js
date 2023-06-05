@@ -39,7 +39,7 @@ CanvasRenderingContext2D.prototype.fill = function (path) {
   this.canvas._roughEnabled = false;
   this.canvas._rough.path(this._path.toString(), {
     fill: this.fillStyle,
-    stroke: this.strokeStyle,
+    stroke: this.strokeStyle === 'rgba(0, 0, 0, 0)' ? 'none' : this.strokeStyle,
     strokeWidth: this.lineWidth,
   })
   this.canvas._roughEnabled = true;

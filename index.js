@@ -3,6 +3,7 @@ import {registry} from 'chart.js'
 import './bar.element.patch.js'
 import './context2d.patch.js'
 import './path2d.patch.js'
+import './filler.patch.js'
 
 registry.add({
   id: 'roughness',
@@ -15,5 +16,7 @@ registry.add({
   },
   defaults: {
     disabled: false,
+    strokeWidth: 0,
+    stroke: 'none',
   }
 })

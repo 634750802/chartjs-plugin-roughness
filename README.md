@@ -22,6 +22,7 @@ More options see [rough options](https://github.com/rough-stuff/rough/wiki#optio
 
 - This package should be imported before `chart.js`.
 - This package [override](./bar.element.patch.js) `BarElement.draw` method if roughness was enabled.
+- This package [override](./filler.patch.js) `Filler` hooks for clearing stroke colors to prevent area border.
 - This package [override](./context2d.patch.js) `beginPath`, `closePath`, `fill`, `stroke`, `moveTo`, `lineTo`, `arcTo`,
   `arc`, `quadraticCurveTo`, `rect`, `ellipse`, `bezierCurveTo` while roughness chart rendering. `ellipse` was **not**
   implemented by `roughjs`, you should provide your own polyfill if you want this feature.
