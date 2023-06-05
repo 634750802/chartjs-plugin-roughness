@@ -1,6 +1,6 @@
 {
   "name": "chartjs-plugin-roughness",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Make your chart.js roughness",
   "module": "index.js",
   "type": "module",
