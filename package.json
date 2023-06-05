@@ -10,6 +10,10 @@
   "keywords": ["Chart.js", "roughjs", "roughness", "sketchy"],
   "author": "634750802",
   "license": "MIT",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/634750802/chartjs-plugin-roughness.git"
+  },
   "packageManager": "pnpm@8.6.0",
   "devDependencies": {
     "@kurkle/color": "^0.3.2",
