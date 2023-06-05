@@ -2,6 +2,10 @@ import {path} from "d3-path";
 import {names} from './path-operation-names.js';
 
 if (typeof CanvasRenderingContext2D !== 'undefined') {
+  patchContext2D(CanvasRenderingContext2D)
+}
+
+export function patchContext2D (CanvasRenderingContext2D) {
   const {beginPath, fill, stroke} = CanvasRenderingContext2D.prototype
 
   CanvasRenderingContext2D.prototype.beginPath = function () {

@@ -20,3 +20,5 @@ registry.add({
     stroke: 'none',
   }
 })
+
+export { patchContext2D } from './context2d.patch.js';

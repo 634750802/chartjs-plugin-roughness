@@ -1,3 +1,4 @@
+import { ChartType } from 'chart.js';
 import roughjs from 'roughjs';
 import { Options } from 'roughjs/bin/core';
 
@@ -9,10 +10,11 @@ declare global {
 }
 
 declare module 'chart.js' {
-  interface PluginOptionsByType {
+  interface PluginOptionsByType<TType extends ChartType> {
     roughness: {
       disabled?: boolean
     } & Options;
   }
 }
 
+export function patchContext2D (ctx: CanvasRenderingContext2D);
