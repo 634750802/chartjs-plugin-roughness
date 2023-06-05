@@ -34,4 +34,4 @@ jobs:
       - run: pnpm i --frozen-lockfile --prefer-offline
       - run: pnpm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
