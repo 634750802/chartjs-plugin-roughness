@@ -1,14 +1,15 @@
 {
   "name": "chartjs-plugin-roughness",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Make your chart.js roughness",
+  "module": "index.js",
+  "type": "module",
   "scripts": {
     "dev": "vite dev"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["Chart.js", "roughjs", "roughness", "sketchy"],
+  "author": "634750802",
+  "license": "MIT",
   "packageManager": "pnpm@8.6.0",
   "devDependencies": {
     "@kurkle/color": "^0.3.2",
