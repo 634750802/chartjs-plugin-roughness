@@ -37,3 +37,5 @@ See [rough options](https://github.com/rough-stuff/rough/wiki#options) for more 
   `arc`, `quadraticCurveTo`, `rect`, `ellipse`, `bezierCurveTo` while roughness chart rendering. `ellipse` was **not**
   implemented by `roughjs`, you should provide your own polyfill if you want this feature.
 - This package [override](./path2d.patch.js) `window.Path2D` class and should act same as original.
+- This package [override](./tooltip.patch.js) `TooltupPlugin` class to skip drawing tooltip background using roughness.
+  Set tooltip plugin option `preventSkipBackgroundRoughness` to `true` to prevent it.

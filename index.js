@@ -1,9 +1,10 @@
 import roughjs from 'roughjs'
-import {registry} from 'chart.js'
+import {registry, defaults} from 'chart.js'
 import './bar.element.patch.js'
 import './context2d.patch.js'
 import './path2d.patch.js'
 import './filler.patch.js'
+import './tooltip.patch.js'
 
 registry.add({
   id: 'roughness',

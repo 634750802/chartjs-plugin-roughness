@@ -17,4 +17,11 @@ declare module 'chart.js' {
   }
 }
 
+declare module 'chart.js/dist/types/index' {
+  interface TooltipOptions<TType extends ChartType = ChartType> {
+    // set true to use roughness draw tooltip background.
+    preventSkipBackgroundRoughness: boolean
+  }
+}
+
 export function patchContext2D (ctx: typeof CanvasRenderingContext2D, Path2DClass?: typeof Path2D);
