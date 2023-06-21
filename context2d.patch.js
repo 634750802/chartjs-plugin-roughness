@@ -14,6 +14,7 @@ export function patchContext2D(CanvasRenderingContext2D, Path2D) {
       return
     }
     this._path = path();
+    this._hasChanges = false;
   }
 
   function toSvgString(path2d) {
@@ -31,7 +32,13 @@ export function patchContext2D(CanvasRenderingContext2D, Path2D) {
     if (Path2D && path instanceof Path2D) {
       this._path = path._path ?? path;
     }
-    if (!this.canvas._roughEnabled) {
+    if (
+      // if the rough plugin was not enabled, use raw method
+      !this.canvas._roughEnabled
+
+      // if no path passed in and nothing was changed, use raw method. See https://github.com/pingcap/ossinsight-lite/issues/102
+      || (!path && !this._hasChanges)
+    ) {
       stroke.apply(this, arguments)
       return
     }
@@ -48,7 +55,7 @@ export function patchContext2D(CanvasRenderingContext2D, Path2D) {
     if (Path2D && path instanceof Path2D) {
       this._path = path._path ?? path;
     }
-    if (!this.canvas._roughEnabled) {
+    if (!this.canvas._roughEnabled || (!path && !this._hasChanges)) {
       fill.apply(this, arguments)
       return
     }
@@ -69,6 +76,7 @@ export function patchContext2D(CanvasRenderingContext2D, Path2D) {
         return
       }
       this._path[name](...arguments);
+      this._hasChanges = true;
     }
   })
 }
