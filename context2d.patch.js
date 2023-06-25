@@ -42,13 +42,20 @@ export function patchContext2D(CanvasRenderingContext2D, Path2D) {
       stroke.apply(this, arguments)
       return
     }
-    this.canvas._roughEnabled = false;
-    this.canvas._rough.path(toSvgString(this._path), {
-      fill: 'none',
-      stroke: this.strokeStyle,
-      strokeWidth: this.lineWidth,
-    })
-    this.canvas._roughEnabled = true;
+    try {
+      this.canvas._roughEnabled = false;
+      this.canvas._rough.path(toSvgString(this._path), {
+        fill: 'none',
+        stroke: this.strokeStyle,
+        strokeWidth: this.lineWidth,
+      })
+      this.canvas._roughEnabled = true;
+    } catch (e) {
+      console.error(e);
+      stroke.apply(this, arguments)
+    } finally {
+      this.canvas._roughEnabled = true;
+    }
   }
 
   CanvasRenderingContext2D.prototype.fill = function (path) {
@@ -59,13 +66,20 @@ export function patchContext2D(CanvasRenderingContext2D, Path2D) {
       fill.apply(this, arguments)
       return
     }
-    this.canvas._roughEnabled = false;
-    this.canvas._rough.path(toSvgString(this._path), {
-      fill: this.fillStyle,
-      stroke: this.strokeStyle === 'rgba(0, 0, 0, 0)' ? 'none' : this.strokeStyle,
-      strokeWidth: this.lineWidth,
-    })
-    this.canvas._roughEnabled = true;
+    try {
+      this.canvas._roughEnabled = false;
+      this.canvas._rough.path(toSvgString(this._path), {
+        fill: this.fillStyle,
+        stroke: this.strokeStyle === 'rgba(0, 0, 0, 0)' ? 'none' : this.strokeStyle,
+        strokeWidth: this.lineWidth,
+      })
+      this.canvas._roughEnabled = true;
+    } catch (e) {
+      console.error(e);
+      fill.apply(this, arguments)
+    } finally {
+      this.canvas._roughEnabled = true;
+    }
   };
 
   names.forEach(name => {
